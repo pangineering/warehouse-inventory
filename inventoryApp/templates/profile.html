@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Profile {% endblock title %}
+{% block page_content %}
+<h1>Profile</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+        <img src="..." class="img-fluid" alt="...">
+    </div>
+    <div class="col-8">
+      <div>
+        <p>Username: <span class="profile-info">{{current.username}}</span></p>
+      </div>
+      <div>
+        <p>Name: <span class="profile-info">{{current.first_name}} {{current.last_name}}</span></p>
+      </div>
+      <div><p>Email: <span class="profile-info">{{current.email}}</span></p></div>
+      <div>
+        <p>Employee Number: <span class="profile-info">{{current.user_profile.employee_number}}</span></p>
+      </div>
+      <div><p>Description: <span class="profile-info">{{current.user_profile.description}}</span></p></div>
+      <div><p>Team: <span class="profile-info">{{current.user_profile.team}}</span></p></div>
+      <div><p>Position: <span class="profile-info">{{current.user_profile.position}}</span></p></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
