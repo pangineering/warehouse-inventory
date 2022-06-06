@@ -1,5 +1,8 @@
 
-# Warehouse Inventory Webapp
+# Warehouse Inventory Webapp <p align="center">
+  <img src="status-in-progress.svg" alt="example badge" style="vertical-align:top margin:6px 4px">
+</p>
+
 
 A Webapp platform for a warehouse to manage its inventories and its operation in real-time.
 This is my side project.
