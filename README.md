@@ -15,12 +15,15 @@ This is my side project.
 **Server:** Django
 
 **API for IoT and AI:** Flask
+
 ## Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Ai to help manage the inventories
+- customer and supplier lists
+- Responsive
+- Create reports
+- Control or monitor robots in the warehouse
+- A dashboard for IoT
 
 ## Color Reference
 
