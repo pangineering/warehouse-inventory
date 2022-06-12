@@ -2,7 +2,7 @@
 # Warehouse Inventory
 
 ![side-project.svg](/side-project.svg) ![type-web-app.svg](/type-web-app.svg)
-[![Status - In Progress](https://img.shields.io/badge/Status-In_Progress-2ea44e?style=for-the-badge)](https://) ![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+[![Status - In Progress](https://img.shields.io/badge/Status-In_Progress-2ea44e?style=for-the-badge)](https://)
 
 ## Tech Stack
 ### For developing Web App
