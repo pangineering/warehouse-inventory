@@ -2,7 +2,7 @@ from email.policy import default
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
-from jsonfield import JSONField
+#from jsonfield import JSONField
 
 
 TEAM_CHOICES = (
@@ -37,8 +37,8 @@ STATUS_CHOICES = (
 class Purchase(models.Model):
     id = models.AutoField(primary_key=True)
     p_num = models.CharField(max_length=200) 
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,related_name="user_profile")
-    #user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,related_name="user_profile")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     employee_number = models.CharField(max_length=200)
     name = models.CharField(max_length=200) 
     description = models.CharField(max_length=200)
@@ -46,7 +46,7 @@ class Purchase(models.Model):
     team = models.CharField(choices=TEAM_CHOICES, max_length=200)
     status = models.CharField(choices=STATUS_CHOICES, max_length=200)
     category = models.CharField(choices=CATEGOY_CHOICES, max_length=200)
-    items = JSONField()
+    #items = JSONField()
 
     def __str__(self):
         return  self.employee_number + "_" + self.position + '_' + str(self.user)

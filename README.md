@@ -31,6 +31,27 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 5. Control or monitor robots in the warehouse
 6. A dashboard for IoT
 
+## Screenshots
+![App Screenshot](screens/sign_in.png)
+![App Screenshot](screens/inventory.png)
 
-## Flowchart
 
+## Clone the project
+```bash
+  git clone https://github.com/pangineering/warehouse-inventory.git
+```
+
+## Installation
+1. Create a virual environment
+```bash
+  virtualenv env
+  source env/bin/activate
+```
+2. Install Libraries
+```bash
+    pip3 install -r requirements.txt
+```
+## Run Locally
+```bash
+    python3 manage.py runserver
+```
