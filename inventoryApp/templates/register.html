@@ -1,6 +1,14 @@
-{% extends "base.html" %}
-{% block title %}Register{% endblock title %}
-
+{% extends "base.html" %} {% block title %}Register{% endblock title %} 
 {% block page_content %}
-<h1>Create a New Account</h1>
+
+<h2>Register</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <button class="btn btn-primary" type="submit">Register</button>
+</form>
+
+<a href="{% url 'login' %}">Back to login</a>
+
 {% endblock %}
