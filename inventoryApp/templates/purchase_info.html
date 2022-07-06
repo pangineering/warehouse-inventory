@@ -4,10 +4,11 @@
   <h1>{{ purchase.name }}: <span>{{ purchase.item }}</span></h1>
   <h2>{{ purchase.p_num }}</h2>
   <hr />
-  <h3>{{ purchase.date }}</h3>
-  <h4>{{ purchase.status }}</h4>
-  <h5><b>Category: </b>{{ purchase.category }}</h5>
-  <h5><b>Team: </b>{{ purchase.team }}</h5>
+  <h3>{{ purchase.suppliers }}</h3>
+  <h4>{{ purchase.date }}</h4>
+  <h5>{{ purchase.status }}</h5>
+  <h6><b>Category: </b>{{ purchase.category }}</h6>
+  <h6><b>Team: </b>{{ purchase.team }}</h6>
   <p><b>Quantity: </b>{{ purchase.qty }}</p>
 </div>
 {% endblock %}

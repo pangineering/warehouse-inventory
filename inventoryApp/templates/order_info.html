@@ -4,10 +4,11 @@
   <h1>{{ order.name }}: <span>{{ order.item }}</span></h1>
   <h2>{{ order.s_num }}</h2>
   <hr />
-  <h3>{{ order.date }}</h3>
-  <h4>{{ order.status }}</h4>
-  <h5><b>Category: </b>{{ order.category }}</h5>
-  <h5><b>Team: </b>{{ order.team }}</h5>
+  <h3>{{ order.customer }}</h3>
+  <h4>{{ order.date }}</h4>
+  <h5>{{ order.status }}</h5>
+  <h6><b>Category: </b>{{ order.category }}</h6>
+  <h6><b>Team: </b>{{ order.team }}</h6>
   <p><b>Quantity: </b>{{ order.qty }}</p>
 </div>
 {% endblock %}
