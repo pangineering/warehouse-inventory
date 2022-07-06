@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Inventory
+from django.http import HttpResponseRedirect
+from .form import InventoryForm
+
 
 @login_required
 def inventory_list(request):
@@ -9,9 +12,25 @@ def inventory_list(request):
     return render(request, 'inventory_list.html', context)
 
 @login_required
-def inventory_add(request):
-    return render(request, 'inventory_add.html', {})
-    
-@login_required
 def inventory_edit(request):
     return render(request, 'inventory_edit.html', {})
+    
+@login_required
+def inventory_add(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = InventoryForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            inv = form.save(commit=False)
+            inv.save()
+            # ...
+            # redirect to a new URL:
+            return redirect("inventory:inventory_list")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = InventoryForm()
+    return render(request, 'inventory_add.html', {'form': form})
