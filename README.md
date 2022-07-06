@@ -31,9 +31,9 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 5. Control or monitor robots in the warehouse
 6. A dashboard for IoT
 
-## Screenshots
+<!-- ## Screenshots
 
-![App Screenshot](screens/inventory.png)
+![App Screenshot](screens/inventory.png) -->
 
 
 ## Clone the project
