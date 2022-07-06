@@ -14,7 +14,14 @@ def inventory_list(request):
 @login_required
 def inventory_edit(request):
     return render(request, 'inventory_edit.html', {})
-    
+
+@login_required
+def inventory_info(request,pk):
+    inv = Inventory.objects.get(pk=pk)
+    context = {'inventory':inv}
+    return render(request, 'inventory_info.html', context)
+
+
 @login_required
 def inventory_add(request):
     # if this is a POST request we need to process the form data

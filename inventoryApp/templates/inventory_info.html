@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+  <h1>{{ inventory.name }}</h1>
+  <h2>{{ inventory.number }}</h2>
+  <hr />
+  <h3>{{ inventory.category }}</h3>
+  <h4>{{ inventory.type }}</h4>
+  <h5>{{ inventory.status }}</h5>
+  <p><b>Quantity: </b>{{ inventory.qty }}</p>
+  <p>{{ inventory.description }}</p>
+</div>
+{% endblock %}
