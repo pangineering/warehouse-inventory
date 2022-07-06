@@ -6,21 +6,53 @@ from .models import Employee
 from django.contrib.auth import login
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from user.form import CustomUserCreationForm
+from user.form import CustomUserCreationForm, ProfileForm
 from django.template import RequestContext
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 
+
 @login_required
 def profile(request):
+    username = request.user.username
+    #print(username)
+    current = User.objects.get(username=username)
+    print(current)
+    profile = Employee.objects.filter(user=current.id)
+    
+    context = {'current':current,'profile':profile}
+    return render(request, 'profile.html', context)
+
+
+@login_required
+def edit_profile(request):
     username = request.user.username
     current = User.objects.get(username=username)
     print(current.id)
     profile = Employee.objects.filter() #.filter(user=current.username)
     print(profile)
-    context = {'current':current,'profile':profile}
-    return render(request, 'profile.html', context)
+    
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = ProfileForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            inv = form.save(commit=False)
+            inv.user = current
+            inv.save()
+            # ...
+            # redirect to a new URL:
+            return redirect("user:profile")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ProfileForm()
+
+    context = {'current':current,'profile':profile,'form':form}
+    return render(request, 'edit_profile.html', context)
+    
 
 @login_required
 def setting(request):
