@@ -1,20 +1,36 @@
 from django.shortcuts import render, redirect
 from .models import Purchase, Selling
 from .form import PurchaseForm, OrderForm
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def purchase(request):
     purchase = Purchase.objects.all()
     context = {'purchase':purchase}
     return render(request, 'purchase.html', context)
 
 
-
+@login_required
 def sell(request):
     orders = Selling.objects.all()
     context = {'orders':orders}
     return render(request, 'sell.html', context)
 
+
+@login_required
+def purchase_info(request,pk):
+    purchase= Purchase.objects.get(pk=pk)
+    context = {'purchase':purchase}
+    return render(request, 'purchase_info.html', context)
+
+@login_required
+def order_info(request,pk):
+    order = Selling.objects.get(pk=pk)
+    context = {'order':order}
+    return render(request, 'order_info.html', context)
+
+
+@login_required
 def add_purchase(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:

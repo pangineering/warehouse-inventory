@@ -6,12 +6,12 @@ from django.contrib.auth.models import User
 from jsonfield import JSONField
 
 
-TEAM_CHOICES = (
+CATEGOY_CHOICES = (
     ('Robotics', 'Robotics'),
     ('Automobile', 'Automobile'),
     ('Machine', 'Machine'),
 )
-CATEGOY_CHOICES = (
+TEAM_CHOICES = (
     ('Manager', 'Manager'),
     ('Sales', 'Sales'),
     ('Engineer', 'Engineer'),

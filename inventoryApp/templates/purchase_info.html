@@ -1,0 +1,13 @@
+{% extends "base.html" %} 
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+  <h1>{{ purchase.name }}: <span>{{ purchase.item }}</span></h1>
+  <h2>{{ purchase.p_num }}</h2>
+  <hr />
+  <h3>{{ purchase.date }}</h3>
+  <h4>{{ purchase.status }}</h4>
+  <h5><b>Category: </b>{{ purchase.category }}</h5>
+  <h5><b>Team: </b>{{ purchase.team }}</h5>
+  <p><b>Quantity: </b>{{ purchase.qty }}</p>
+</div>
+{% endblock %}

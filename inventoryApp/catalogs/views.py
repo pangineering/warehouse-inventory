@@ -2,12 +2,15 @@ from itertools import product
 from django.shortcuts import render, redirect
 from .models import Products
 from .form import ProductForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def product_list(request):
     products = Products.objects.all()
     context = {'products':products}
     return render(request, 'catalogs.html', context)
 
+@login_required
 def product_add(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -26,6 +29,13 @@ def product_add(request):
         form = ProductForm()
    
     return render(request, 'add_product.html', {'form': form})
-
+    
+@login_required
 def product_edit(request):
     return render(request, 'edit_product.html', {})
+
+@login_required
+def product_info(request,pk):
+    inv = Products.objects.get(pk=pk)
+    context = {'inventory':inv}
+    return render(request, 'inventory_info.html', context)
