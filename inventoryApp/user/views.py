@@ -8,6 +8,9 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from user.form import CustomUserCreationForm
 from django.template import RequestContext
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 
 @login_required
 def profile(request):
@@ -21,8 +24,21 @@ def profile(request):
 
 @login_required
 def setting(request):
-    return render(request, 'setting.html', {})
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
 
+    return render(request, 'setting.html',{
+        'form': form
+    })
 
 def register(request):
     if request.method == "GET":
