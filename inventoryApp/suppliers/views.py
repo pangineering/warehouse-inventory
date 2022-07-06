@@ -1,10 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .form import SupplierForm
+from .models import Suppliers
 
 def supplier_list(request):
-    return render(request, 'suppliers.html', {})
+    suppliers = Suppliers.objects.all()
+    context = {'suppliers':suppliers}
+    return render(request, 'suppliers.html', context)
 
-#def product_add(request):
-#    return render(request, 'customer_add.html', {})
+def supplier_add(request):
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SupplierForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            inv = form.save(commit=False)
+            inv.save()
+            # ...
+            # redirect to a new URL:
+            return redirect("suppliers:supplier_list")
 
-#def product_edit(request):
-#    return render(request, 'customer_edit.html', {})
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = SupplierForm()
+    return render(request, 'suppliers_add.html', {'form': form})
+
+def supplier_edit(request):
+    return render(request, 'suppliers_edit.html', {})

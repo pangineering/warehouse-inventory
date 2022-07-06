@@ -5,6 +5,6 @@ app_name = 'suppliers'
 
 urlpatterns = [
     path('', views.supplier_list, name='supplier_list'),
-    #path('add', views.customer_add, name='customer_add'),
-    #path('edit', views.customer_edit, name='customer_edit')
+    path('add', views.supplier_add, name='supplier_add'),
+    path('edit', views.supplier_edit, name='supplier_edit')
 ]

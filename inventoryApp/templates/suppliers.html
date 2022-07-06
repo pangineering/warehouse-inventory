@@ -1,6 +1,37 @@
-{% extends "base.html" %}
-{% block title %}Suppliers{% endblock title %}
-
+{% extends "base.html" %} {% block title %}Suppliers{% endblock title %}
 {% block page_content %}
 <h1>Suppliers</h1>
+<div>
+  <a href="{% url 'suppliers:supplier_add' %}">add</a>
+</div>
+<table class="table table-primary">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">mobile</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for int in suppliers %}
+    <tr>
+      <th scope="row">{{int.number}}</th>
+      <td>{{int.name}}</td>
+      <td>{{int.company_name}}</td>
+      <td>{{int.email}}</td>
+      <td>{{int.mobile}}</td>
+      <td>{{int.status}}</td>
+      <td>
+        <a><button type="button" class="btn btn-info">Info</button></a>
+        <button type="button" class="btn btn-warning">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
