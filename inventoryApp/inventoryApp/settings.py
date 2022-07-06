@@ -43,13 +43,13 @@ INSTALLED_APPS = [
     'inventory',
     'buy_sell',
     'user',
-    'reports',
-    'robots',
-    'smart',
     'suppliers',
-    'catalogs',
-    'apis'
-]
+    'catalogs']#,
+    #'robots',
+   # 'smart',
+  #  'apis',
+ #   'reports',
+#]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
