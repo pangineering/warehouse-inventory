@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+  <h1>{{ customer.name }}</h1>
+  <h2>{{ customer.number }}</h2>
+  <hr />
+  <h3>{{ customer.company_name }}</h3>
+  <h5>{{ customer.status }}</h5>
+  <p><b>Email: </b>{{ customer.email }}</p>
+  <p><b>Mobile: </b>{{ customer.mobile }}</p>
+</div>
+{% endblock %}
