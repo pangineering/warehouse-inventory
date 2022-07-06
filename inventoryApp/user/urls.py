@@ -1,6 +1,5 @@
 from django.urls import path
 from user import views
-from dashboard.views import home
 
 app_name = 'user'
 
