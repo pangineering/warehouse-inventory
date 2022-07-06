@@ -41,25 +41,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'reports:report_list' %}">Reports</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Orders
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{% url 'buy_sell:overview' %}">Overview</a></li>
-                  <li><a class="dropdown-item" href="{% url 'buy_sell:buy_list' %}">Buy</a></li>
-                  <li><a class="dropdown-item" href="{% url 'buy_sell:sell_list' %}">Sell</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'buy_sell:buy_list' %}">Purchase</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>
-                  Smart
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{% url 'buy_sell:overview' %}">Overview</a></li>
-                  <li><a class="dropdown-item" href="{% url 'buy_sell:buy_list' %}">Buy</a></li>
-                  <li><a class="dropdown-item" href="{% url 'buy_sell:sell_list' %}">Sell</a></li>
-                </ul>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'buy_sell:sell_list' %}">Orders</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

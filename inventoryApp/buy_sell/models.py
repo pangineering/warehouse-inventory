@@ -1,8 +1,9 @@
 from email.policy import default
+from unicodedata import category
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
-#from jsonfield import JSONField
+from jsonfield import JSONField
 
 
 TEAM_CHOICES = (
@@ -24,29 +25,37 @@ STATUS_CHOICES = (
     ('Revision', 'Revision'),
 )
 
-# class Profile(models.Model): 
-#     id = models.CharField(max_length=200,primary_key=True) #(User, on_delete=models.CASCADE,default=99)
-#     employee_number = models.CharField(max_length=200)
-#     description = models.CharField(max_length=200)
-#     team = models.CharField(choices=TEAM_CHOICES, max_length=200)
-#     position = models.CharField(choices=CATEGOY_CHOICES, max_length=200)
-
-#     def __str__(self):
-#         return  self.employee_number + "_" + self.position
 
 class Purchase(models.Model):
     id = models.AutoField(primary_key=True)
-    p_num = models.CharField(max_length=200) 
+    p_num = models.CharField(max_length=200,unique=True) 
     #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,related_name="user_profile")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     employee_number = models.CharField(max_length=200)
     name = models.CharField(max_length=200) 
     description = models.CharField(max_length=200)
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now=False)
     team = models.CharField(choices=TEAM_CHOICES, max_length=200)
     status = models.CharField(choices=STATUS_CHOICES, max_length=200)
     category = models.CharField(choices=CATEGOY_CHOICES, max_length=200)
-    #items = JSONField()
+    item = models.CharField(max_length=200, default='')
+    qty = models.IntegerField(default=0)
 
     def __str__(self):
         return  self.employee_number + "_" + self.position + '_' + str(self.user)
+
+
+class Selling(models.Model):
+    id = models.AutoField(primary_key=True)
+    s_num = models.CharField(max_length=200,unique=True)
+    name = models.CharField(max_length=200)  
+    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,related_name="user_profile")
+    date = models.DateTimeField(auto_now=False)
+    team = models.CharField(choices=TEAM_CHOICES, max_length=200)
+    status = models.CharField(choices=STATUS_CHOICES, max_length=200)
+    category = models.CharField(choices=CATEGOY_CHOICES, max_length=200)
+    item = models.CharField(max_length=200)
+    qty = models.IntegerField(default=0)
+
+    def __str__(self):
+        return  str(self.s_num) + '_' + self.team + "_" + self.category + '_' + self.status + '_' + str(self.date) 
