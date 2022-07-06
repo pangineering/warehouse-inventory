@@ -32,7 +32,7 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 6. A dashboard for IoT
 
 ## Screenshots
-![App Screenshot](screens/sign_in.png)
+
 ![App Screenshot](screens/inventory.png)
 
 
