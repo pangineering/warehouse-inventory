@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Purchase, Selling
-from .form import PurchaseForm
+from .form import PurchaseForm, OrderForm
 
 
 def purchase(request):
@@ -11,9 +11,11 @@ def purchase(request):
 
 
 def sell(request):
-    return render(request, 'sell.html', {})
+    orders = Selling.objects.all()
+    context = {'orders':orders}
+    return render(request, 'sell.html', context)
 
-def add_order(request):
+def add_purchase(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = PurchaseForm(request.POST)
@@ -26,10 +28,27 @@ def add_order(request):
             inv.save()
             # ...
             # redirect to a new URL:
-            return redirect("inventory:inventory_list")
+            return redirect("buy_sell:buy_list")
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = PurchaseForm()
-    return render(request, 'add_order.html', {'form':form})
+    return render(request, 'add_purchase.html', {'form':form})
 
+def add_order(request):
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = OrderForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            inv = form.save(commit=False)
+            inv.save()
+            # ...
+            # redirect to a new URL:
+            return redirect("buy_sell:sell_list")
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = OrderForm()
+    return render(request, 'add_order.html', {'form':form})

@@ -37,13 +37,13 @@ class PurchaseForm(forms.ModelForm):
 
 
 class OrderForm(forms.ModelForm):
-    s_num = forms.CharField(label='Product number', max_length=100)
-    name = forms.CharField(label='Product number', max_length=100)
+    s_num = forms.CharField(label='Order number', max_length=100)
+    name = forms.CharField(label='Order number', max_length=100)
     description = forms.CharField(widget=forms.Textarea)
     date = forms.DateTimeInput()
-    team = forms.ChoiceField(label='Product Team',choices=TEAM_CHOICES)
-    status = forms.ChoiceField(label='Product Status',choices=STATUS_CHOICES)
-    category = forms.ChoiceField(label='Product Category',choices=CATEGOY_CHOICES)
+    team = forms.ChoiceField(label='Order Team',choices=TEAM_CHOICES)
+    status = forms.ChoiceField(label='Order Status',choices=STATUS_CHOICES)
+    category = forms.ChoiceField(label='Order Category',choices=CATEGOY_CHOICES)
     item = forms.CharField(max_length=200)
    
     class Meta:

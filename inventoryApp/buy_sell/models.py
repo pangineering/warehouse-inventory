@@ -29,7 +29,6 @@ STATUS_CHOICES = (
 class Purchase(models.Model):
     id = models.AutoField(primary_key=True)
     p_num = models.CharField(max_length=200,unique=True) 
-    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,related_name="user_profile")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     employee_number = models.CharField(max_length=200)
     name = models.CharField(max_length=200) 
@@ -49,7 +48,6 @@ class Selling(models.Model):
     id = models.AutoField(primary_key=True)
     s_num = models.CharField(max_length=200,unique=True)
     name = models.CharField(max_length=200)  
-    #user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,null=True,related_name="user_profile")
     date = models.DateTimeField(auto_now=False)
     team = models.CharField(choices=TEAM_CHOICES, max_length=200)
     status = models.CharField(choices=STATUS_CHOICES, max_length=200)
