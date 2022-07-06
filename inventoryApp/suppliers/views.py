@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from .form import SupplierForm
 from .models import Suppliers
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def supplier_list(request):
     suppliers = Suppliers.objects.all()
     context = {'suppliers':suppliers}
     return render(request, 'suppliers.html', context)
 
+@login_required
 def supplier_add(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -25,5 +29,12 @@ def supplier_add(request):
         form = SupplierForm()
     return render(request, 'suppliers_add.html', {'form': form})
 
+@login_required
 def supplier_edit(request):
     return render(request, 'suppliers_edit.html', {})
+
+@login_required
+def supplier_info(request,pk):
+    sup = Suppliers.objects.get(pk=pk)
+    context = {'supplier':sup}
+    return render(request, 'suppliers_info.html', context)
