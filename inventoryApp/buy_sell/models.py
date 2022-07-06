@@ -4,6 +4,8 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 from jsonfield import JSONField
+from customers.models import Customers
+from suppliers.models import Suppliers
 
 
 CATEGOY_CHOICES = (
@@ -39,9 +41,10 @@ class Purchase(models.Model):
     category = models.CharField(choices=CATEGOY_CHOICES, max_length=200)
     item = models.CharField(max_length=200, default='')
     qty = models.IntegerField(default=0)
+    suppliers = models.ForeignKey(Suppliers, on_delete=models.CASCADE,null=True) 
 
     def __str__(self):
-        return  self.employee_number + "_" + self.position + '_' + str(self.user)
+        return  self.employee_number + "_" + self.position + '_' + str(self.user) + '_' + str(self.suppliers)
 
 
 class Selling(models.Model):
@@ -54,6 +57,7 @@ class Selling(models.Model):
     category = models.CharField(choices=CATEGOY_CHOICES, max_length=200)
     item = models.CharField(max_length=200)
     qty = models.IntegerField(default=0)
-
+    customer = models.ForeignKey(Customers, on_delete=models.CASCADE,null=True) 
+    
     def __str__(self):
-        return  str(self.s_num) + '_' + self.team + "_" + self.category + '_' + self.status + '_' + str(self.date) 
+        return  str(self.s_num) + '_' + self.team + "_" + self.category + '_' + self.status + '_' + str(self.date) + '_' + str(self.customer)
