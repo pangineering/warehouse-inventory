@@ -7,32 +7,33 @@
   <a href="{% url 'customers:customer_add' %}">add</a>
 </div>
 <table class="table table-primary">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">mobile</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for int in customers %}
+    <tr>
+      <th scope="row">{{int.number}}</th>
+      <td>{{int.name}}</td>
+      <td>{{int.company_name}}</td>
+      <td>{{int.email}}</td>
+      <td>{{int.mobile}}</td>
+      <td>{{int.status}}</td>
+      <td>
+        <a><button type="button" class="btn btn-info">Info</button></a>
+        <button type="button" class="btn btn-warning">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

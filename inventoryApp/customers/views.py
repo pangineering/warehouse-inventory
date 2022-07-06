@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .form import CustomerForm
+from .models import Customers
 
 def customer_list(request):
-    return render(request, 'customers.html', {})
+    customers = Customers.objects.all()
+    context = {'customers':customers}
+    return render(request, 'customers.html', context)
 
 def customer_add(request):
     if request.method == 'POST':
@@ -15,7 +18,7 @@ def customer_add(request):
             inv.save()
             # ...
             # redirect to a new URL:
-            return redirect("customer:customer_list")
+            return redirect("customers:customer_list")
 
     # if a GET (or any other method) we'll create a blank form
     else:
