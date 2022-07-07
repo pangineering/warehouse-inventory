@@ -1,5 +1,4 @@
-{% extends "base.html" %} 
-{% block page_content %}
+{% extends "base.html" %} {% block page_content %}
 <div class="col-md-8 offset-md-2">
   <h1>{{ purchase.name }}: <span>{{ purchase.item }}</span></h1>
   <h2>{{ purchase.p_num }}</h2>
@@ -10,5 +9,12 @@
   <h6><b>Category: </b>{{ purchase.category }}</h6>
   <h6><b>Team: </b>{{ purchase.team }}</h6>
   <p><b>Quantity: </b>{{ purchase.qty }}</p>
+  <br />
+  <a href="{% url 'buy_sell:purchase_edit' int.pk%}"
+    ><button type="button" class="btn btn-warning">Edit</button></a
+  >
+  <a href="{% url 'buy_sell:delete_purchase' int.pk%}"
+    ><button type="button" class="btn btn-danger">Delete</button></a
+  >
 </div>
 {% endblock %}

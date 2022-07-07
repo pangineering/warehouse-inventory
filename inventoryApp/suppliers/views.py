@@ -30,8 +30,22 @@ def supplier_add(request):
     return render(request, 'suppliers_add.html', {'form': form})
 
 @login_required
-def supplier_edit(request):
-    return render(request, 'suppliers_edit.html', {})
+def supplier_edit(request,pk):
+    inv = Suppliers.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = SupplierForm(request.POST, instance=inv)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect("suppliers:supplier_list")
+    else:
+        form = SupplierForm(instance=inv)
+
+    return render(request,
+                'supplier_edit.html',
+                {'form': form})
 
 @login_required
 def supplier_info(request,pk):

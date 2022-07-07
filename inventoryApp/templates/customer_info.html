@@ -1,5 +1,4 @@
-{% extends "base.html" %} 
-{% block page_content %}
+{% extends "base.html" %} {% block page_content %}
 <div class="col-md-8 offset-md-2">
   <h1>{{ customer.name }}</h1>
   <h2>{{ customer.number }}</h2>
@@ -8,5 +7,12 @@
   <h5>{{ customer.status }}</h5>
   <p><b>Email: </b>{{ customer.email }}</p>
   <p><b>Mobile: </b>{{ customer.mobile }}</p>
+  <br />
+  <a href="{% url 'customers:customer_edit' int.pk%}"
+    ><button type="button" class="btn btn-warning">Edit</button></a
+  >
+  <a href="{% url 'customers:delete' int.pk%}"
+    ><button type="button" class="btn btn-danger">Delete</button></a
+  >
 </div>
 {% endblock %}
