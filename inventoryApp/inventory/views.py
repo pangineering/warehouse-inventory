@@ -41,3 +41,10 @@ def inventory_add(request):
     else:
         form = InventoryForm()
     return render(request, 'inventory_add.html', {'form': form})
+
+
+@login_required
+def delete(request, pk):
+  inv = Inventory.objects.get(pk=pk)
+  inv.delete()
+  return redirect("inventory:inventory_list")

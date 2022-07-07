@@ -39,3 +39,10 @@ def product_info(request,pk):
     inv = Products.objects.get(pk=pk)
     context = {'inventory':inv}
     return render(request, 'inventory_info.html', context)
+
+
+@login_required
+def delete(request, pk):
+  cus = Products.objects.get(pk=pk)
+  cus.delete()
+  return redirect("customers:customer_list")

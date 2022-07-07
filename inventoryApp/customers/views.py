@@ -37,3 +37,9 @@ def customer_info(request,pk):
     customer = Customers.objects.get(pk=pk)
     context = {'customer':customer}
     return render(request, 'customer_info.html', context)
+
+@login_required
+def delete(request, pk):
+  cus = Customers.objects.get(pk=pk)
+  cus.delete()
+  return redirect("customers:customer_list")

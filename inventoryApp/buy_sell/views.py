@@ -68,3 +68,20 @@ def add_order(request):
     else:
         form = OrderForm()
     return render(request, 'add_order.html', {'form':form})
+
+
+
+
+@login_required
+def delete_order(request, pk):
+  ord = Selling.objects.get(pk=pk)
+  ord.delete()
+  return redirect("buy_sell:sell_list")
+
+
+
+@login_required
+def delete_purchase(request, pk):
+  pur = Purchase.objects.get(pk=pk)
+  pur.delete()
+  return redirect("buy_sell:buy_list")

@@ -38,3 +38,9 @@ def supplier_info(request,pk):
     sup = Suppliers.objects.get(pk=pk)
     context = {'supplier':sup}
     return render(request, 'suppliers_info.html', context)
+
+@login_required
+def delete(request, pk):
+  sup = Suppliers.objects.get(pk=pk)
+  sup.delete()
+  return redirect("suppliers:supplier_list")
