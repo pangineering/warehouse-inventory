@@ -12,6 +12,7 @@ urlpatterns = [
    # path('reports/', include('reports.urls')),
     path('catalogs/', include('catalogs.urls')),
     path('suppliers/', include('suppliers.urls')),
+    path('', auth_views.LoginView.as_view(template_name='signin.html'),name='login'),
     path('signin/', auth_views.LoginView.as_view(template_name='signin.html'),name='login'),
 	path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'),name='logout')
 ]
