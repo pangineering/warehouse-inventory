@@ -1,13 +1,13 @@
 from distutils.command.upload import upload
 from django import forms
-from .models import Purchase, Selling
+from .models import TEAM_CHOICES, Purchase, Selling
 from jsonfield.forms import JSONField
-TEAM_CHOICES = (
+CATEGOY_CHOICES = (
     ('Robotics', 'Robotics'),
     ('Automobile', 'Automobile'),
     ('Machine', 'Machine'),
 )
-CATEGOY_CHOICES = (
+TEAM_CHOICES  = (
     ('Manager', 'Manager'),
     ('Sales', 'Sales'),
     ('Engineer', 'Engineer'),

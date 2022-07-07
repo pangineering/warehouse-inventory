@@ -51,6 +51,7 @@ def add_purchase(request):
         form = PurchaseForm()
     return render(request, 'add_purchase.html', {'form':form})
 
+@login_required
 def add_order(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -85,3 +86,41 @@ def delete_purchase(request, pk):
   pur = Purchase.objects.get(pk=pk)
   pur.delete()
   return redirect("buy_sell:buy_list")
+
+@login_required
+def update_purchase(request, pk):
+    inv = Purchase.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = PurchaseForm(request.POST, instance=inv)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect("buy_sell:buy_list")
+    else:
+        form = PurchaseForm(instance=inv)
+
+    return render(request,
+                'edit_purchase.html',
+                {'form': form})
+
+
+
+@login_required
+def update_order(request, pk):
+    inv = Selling.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = OrderForm(request.POST, instance=inv)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect("buy_sell:sell_list")
+    else:
+        form = OrderForm(instance=inv)
+
+    return render(request,
+                'edit_order.html',
+                {'form': form})

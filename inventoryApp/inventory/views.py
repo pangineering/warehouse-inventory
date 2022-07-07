@@ -11,9 +11,7 @@ def inventory_list(request):
     context = {'inventories':inventories}
     return render(request, 'inventory_list.html', context)
 
-@login_required
-def inventory_edit(request):
-    return render(request, 'inventory_edit.html', {})
+
 
 @login_required
 def inventory_info(request,pk):
@@ -48,3 +46,21 @@ def delete(request, pk):
   inv = Inventory.objects.get(pk=pk)
   inv.delete()
   return redirect("inventory:inventory_list")
+
+@login_required
+def update(request, pk):
+    inv = Inventory.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = InventoryForm(request.POST, instance=inv)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect("inventory:inventory_list")
+    else:
+        form = InventoryForm(instance=inv)
+
+    return render(request,
+                'inventory_edit.html',
+                {'form': form})

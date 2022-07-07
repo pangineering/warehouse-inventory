@@ -26,8 +26,8 @@
         <td>{{int.description}}</td>
         <td>{{int.qty}}</td>
         <td>
-          <a href="{% url 'catalogs:info' int.pk%}"><button type="button" class="btn btn-info">Info</button></a>
-          <button type="button" class="btn btn-warning">Edit</button>
+          <a href="{% url 'catalogs:product_info' int.pk%}"><button type="button" class="btn btn-info">Info</button></a>
+          <a href="{% url 'catalogs:product_edit' int.pk%}"><button type="button" class="btn btn-warning">Edit</button></a>a
           <a href="{% url 'catalogs:delete' int.pk%}"><button type="button" class="btn btn-danger">Delete</button></a>
         </td>
       </tr>

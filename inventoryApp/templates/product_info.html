@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+  <h1>{{ product.name }}: <span>{{ order.item }}</span></h1>
+  <h2>{{ product.s_num }}</h2>
+  <hr />
+  <h3>{{ product.customer }}</h3>
+  <h4>{{ product.date }}</h4>
+  <h6><b>Quantity: </b>{{ product.qty }}</h6>
+  <h6><b>Category: </b>{{ product.category }}</h6>
+  <h6><b>Type: </b>{{ product.type }}</h6>
+  <p>{{ product.description }}</p>
+</div>
+{% endblock %}

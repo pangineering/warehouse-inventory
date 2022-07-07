@@ -29,8 +29,22 @@ def customer_add(request):
     return render(request, 'customer_add.html', {'form': form})
 
 @login_required
-def customer_edit(request):
-    return render(request, 'customer_edit.html', {})
+def customer_edit(request,pk):
+    inv = Customers.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=inv)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect("customers:customer_list")
+    else:
+        form = CustomerForm(instance=inv)
+
+    return render(request,
+                'customer_edit.html',
+                {'form': form})
 
 @login_required
 def customer_info(request,pk):

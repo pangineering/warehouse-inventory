@@ -31,18 +31,33 @@ def product_add(request):
     return render(request, 'add_product.html', {'form': form})
     
 @login_required
-def product_edit(request):
-    return render(request, 'edit_product.html', {})
+def product_edit(request,pk):
+    product = Products.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return redirect("catalogs:product_list")
+    else:
+        form = ProductForm(instance=product)
+
+    return render(request,
+                'edit_product.html',
+                {'form': form})
 
 @login_required
 def product_info(request,pk):
-    inv = Products.objects.get(pk=pk)
-    context = {'inventory':inv}
-    return render(request, 'inventory_info.html', context)
+    product = Products.objects.get(pk=pk)
+    context = {'product':product}
+    print(context)
+    return render(request, 'product_info.html', context)
 
 
 @login_required
 def delete(request, pk):
   cus = Products.objects.get(pk=pk)
   cus.delete()
-  return redirect("customers:customer_list")
+  return redirect("catalogs:product_list")
