@@ -34,7 +34,10 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 <!-- ## Screenshots
 
 ![App Screenshot](screens/inventory.png) -->
-
+## Users
+| Username  | Password  | Password |
+| :-------- | :-------- | :------- |
+| admin_01  |1234567890 | superuser|
 
 ## Clone the project
 ```bash
@@ -54,4 +57,14 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 ## Run Locally
 ```bash
     python3 manage.py runserver
+``
+
+## url
+### Site
 ```
+  http://127.0.0.1:8000/signin/
+````
+### Admin
+```
+    http://127.0.0.1:8000/admin/
+````
