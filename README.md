@@ -41,12 +41,7 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 ```bash
   git clone https://github.com/pangineering/warehouse-inventory.git
 ```
-## url
-### Site
-  http://127.0.0.1:8000/signin/
 
-### Admin
-  http://127.0.0.1:8000/admin/
 
 
 ## Installation
@@ -63,5 +58,11 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 ## Run Locally
 ```bash
     python3 manage.py runserver
-``
+```
 
+## url
+### Site
+  http://127.0.0.1:8000/
+
+### Admin
+  http://127.0.0.1:8000/admin/
