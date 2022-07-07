@@ -60,9 +60,9 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
     python3 manage.py runserver
 ```
 
-## url
-### Site
+### local url
+#### Site
   http://127.0.0.1:8000/
 
-### Admin
+#### Admin
   http://127.0.0.1:8000/admin/
