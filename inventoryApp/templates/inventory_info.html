@@ -9,8 +9,6 @@
   <h5>{{ inventory.status }}</h5>
   <p><b>Quantity: </b>{{ inventory.qty }}</p>
   <p>{{ inventory.description }}</p>
-  <br />
-  <a href="{% url 'inventory:inventory_edit' int.pk%}"><button type="button" class="btn btn-warning">Edit</button></a>
-  <a href="{% url 'inventory:delete' int.pk%}"><button type="button" class="btn btn-danger">Delete</button></a>
+
 </div>
 {% endblock %}

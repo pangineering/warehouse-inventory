@@ -57,7 +57,7 @@ def product_info(request,pk):
 
 
 @login_required
-def delete(request, pk):
+def delete_product(request, pk):
   cus = Products.objects.get(pk=pk)
   cus.delete()
   return redirect("catalogs:product_list")

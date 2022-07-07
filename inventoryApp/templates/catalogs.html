@@ -1,37 +1,43 @@
-{% extends "base.html" %}
-{% block title %}Products{% endblock title %}
-
+{% extends "base.html" %} {% block title %}Products{% endblock title %} 
 {% block page_content %}
 <h1>Product Catalogs</h1>
 <div>
-    <a href="{% url 'catalogs:product_add' %}"><button type="button" class="btn btn-success">add</button></a>
-  </div>
-  <table class="table table-primary">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Category</th>
-        <th scope="col">Description</th>
-        <th scope="col">Qty</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for int in products %}
-      <tr>
-        <th scope="row">{{int.number}}</th>
-        <td>{{int.name}}</td>
-        <td>{{int.category}}</td>
-        <td>{{int.description}}</td>
-        <td>{{int.qty}}</td>
-        <td>
-          <a href="{% url 'catalogs:product_info' int.pk%}"><button type="button" class="btn btn-info">Info</button></a>
-          <a href="{% url 'catalogs:product_edit' int.pk%}"><button type="button" class="btn btn-warning">Edit</button></a>
-          <a href="{% url 'catalogs:delete' int.pk%}"><button type="button" class="btn btn-danger">Delete</button></a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <a href="{% url 'catalogs:product_add' %}"
+    ><button type="button" class="btn btn-success">add</button></a
+  >
+</div>
+<table class="table table-primary">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <th scope="col">Qty</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for int in products %}
+    <tr>
+      <th scope="row">{{int.number}}</th>
+      <td>{{int.name}}</td>
+      <td>{{int.category}}</td>
+      <td>{{int.description}}</td>
+      <td>{{int.qty}}</td>
+      <td>
+        <a href="{% url 'catalogs:product_info' int.pk%}"
+          ><button type="button" class="btn btn-info">Info</button></a
+        >
+        <a href="{% url 'catalogs:product_edit' int.pk%}"
+          ><button type="button" class="btn btn-warning">Edit</button></a
+        >
+        <a href="{% url 'catalogs:delete_product' int.pk%}"
+          ><button type="button" class="btn btn-danger">Delete</button></a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

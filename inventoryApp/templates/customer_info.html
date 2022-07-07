@@ -6,12 +6,6 @@
   <h3>{{ customer.company_name }}</h3>
   <p><b>Email: </b>{{ customer.email }}</p>
   <p><b>Mobile: </b>{{ customer.mobile }}</p>
-  <br />
-  <a href="{% url 'customers:customer_edit' int.pk%}"
-    ><button type="button" class="btn btn-warning">Edit</button></a
-  >
-  <a href="{% url 'customers:delete' int.pk%}"
-    ><button type="button" class="btn btn-danger">Delete</button></a
-  >
+
 </div>
 {% endblock %}

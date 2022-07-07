@@ -9,12 +9,6 @@
   <h6><b>Category: </b>{{ product.category }}</h6>
   <h6><b>Type: </b>{{ product.type }}</h6>
   <p>{{ product.description }}</p>
-  <br />
-  <a href="{% url 'catalogs:product_edit' int.pk%}"
-    ><button type="button" class="btn btn-warning">Edit</button></a
-  >
-  <a href="{% url 'catalogs:delete' int.pk%}"
-    ><button type="button" class="btn btn-danger">Delete</button></a
-  >
+
 </div>
 {% endblock %}

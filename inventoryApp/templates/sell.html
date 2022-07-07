@@ -27,7 +27,7 @@
         <td>{{int.qty}}</td>
         <td>
           <a href="{% url 'buy_sell:order_info' int.pk%}"><button type="button" class="btn btn-info">Info</button></a>
-          <a href="{% url 'buy_sell:order_edit' int.pk%}"><button type="button" class="btn btn-warning">Edit</button></a>
+          <a href="{% url 'buy_sell:update_order' int.pk%}"><button type="button" class="btn btn-warning">Edit</button></a>
           <a href="{% url 'buy_sell:delete_order' int.pk%}"><button type="button" class="btn btn-danger">Delete</button></a>
         </td>
       </tr>
