@@ -1,6 +1,6 @@
 
 # Warehouse Inventory
-
+[![wakatime](https://wakatime.com/badge/github/pangineering/warehouse-inventory.svg)](https://wakatime.com/badge/github/pangineering/warehouse-inventory)
 ![side-project.svg](/side-project.svg) ![type-web-app.svg](/type-web-app.svg)
 ![Status - Complete](https://img.shields.io/badge/Status-Complete-2ea44f)
 
