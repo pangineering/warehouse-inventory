@@ -22,9 +22,11 @@ A Webapp platform for a warehouse to manage its inventories and its operation in
 
 
 ## Features
-1. Customer and supplier lists
-2. Responsive
-3. Create reports
+1. Responsive
+2. Customer and supplier lists
+3. Inventory List
+4. Order list
+5. Track order status
 
 
 
