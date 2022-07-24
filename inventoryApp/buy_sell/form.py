@@ -38,7 +38,7 @@ class PurchaseForm(forms.ModelForm):
 
 class OrderForm(forms.ModelForm):
     s_num = forms.CharField(label='Order number', max_length=100)
-    name = forms.CharField(label='Order number', max_length=100)
+    name = forms.CharField(label='Order name', max_length=100)
     description = forms.CharField(widget=forms.Textarea)
     date = forms.DateTimeInput()
     team = forms.ChoiceField(label='Order Team',choices=TEAM_CHOICES)
